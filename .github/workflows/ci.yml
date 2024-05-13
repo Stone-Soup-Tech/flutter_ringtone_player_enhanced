@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  check-format:
+    name: Check format using dart format.
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Flutter Action
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - name: Check format for library
+        run: dart format --set-exit-if-changed .
+      - name: Check format for example project
+        run: dart format --set-exit-if-changed example
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Flutter Action
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - name: Get dependencies for library
+        run: flutter pub get
+      - name: Lint library using flutter analyze
+        run: flutter analyze .
+      - name: Get dependencies for example project
+        run: flutter pub get
+        working-directory: example
+      - name: Lint example project using flutter analyze
+        run: flutter analyze example
