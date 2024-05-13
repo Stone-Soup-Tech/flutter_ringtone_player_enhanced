@@ -1,13 +1,81 @@
 version: 2
 updates:
-  # Maintain dependencies for pub.dev
+  # Keep the Fluttter dependencies of the library up to date
   - package-ecosystem: 'pub'
     directory: '/'
     schedule:
       interval: 'daily'
+    reviewers:
+      - "MihMihai"
+    labels:
+      - "dependencies"
+    versioning-strategy: increase-if-necessary # uses "increase" for apps and "widen" for libraries.
+    groups:
+      dart:
+        applies-to: version-updates
+        patterns:
+          - "*"       # A wildcard that matches all dependencies in the package
     commit-message:
       prefix: 'pub'
       prefix-development: 'pub dev'
+      include: 'scope'
+
+  # Keep the Fluttter dependencies of the example project up to date
+  - package-ecosystem: 'pub'
+    directory: '/example/'
+    schedule:
+      interval: 'daily'
+    reviewers:
+      - "MihMihai"
+    labels:
+      - "dependencies"
+    versioning-strategy: increase-if-necessary # uses "increase" for apps and "widen" for libraries.
+    groups:
+      dart:
+        applies-to: version-updates
+        patterns:
+          - "*"       # A wildcard that matches all dependencies in the package
+    commit-message:
+      prefix: 'pub'
+      prefix-development: 'pub dev'
+      include: 'scope'
+
+  # Keep the Android dependencies of the library up to date
+  - package-ecosystem: "gradle" # See documentation for possible values
+    directory: "/android/" # Location of package manifests
+    schedule:
+      interval: "daily"
+    reviewers:
+      - "MihMihai"
+    labels:
+      - "dependencies"
+    groups:
+      android:
+        applies-to: version-updates
+        patterns:
+          - "*"       # A wildcard that matches all dependencies in the package
+    commit-message:
+      prefix: 'gradle'
+      prefix-development: 'gradle dev'
+      include: 'scope'
+
+  # Keep the Android dependencies of the example project up to date
+  - package-ecosystem: "gradle" # See documentation for possible values
+    directory: "/example/android/" # Location of package manifests
+    schedule:
+      interval: "daily"
+    reviewers:
+      - "MihMihai"
+    labels:
+      - "dependencies"
+    groups:
+      android:
+        applies-to: version-updates
+        patterns:
+          - "*"       # A wildcard that matches all dependencies in the package
+    commit-message:
+      prefix: 'gradle'
+      prefix-development: 'gradle dev'
       include: 'scope'
 
   # Maintain dependencies for GitHub Actions
@@ -15,6 +83,15 @@ updates:
     directory: '/'
     schedule:
       interval: 'daily'
+    reviewers:
+      - "MihMihai"
+    labels:
+      - "dependencies"
+    groups:
+      github:
+        applies-to: version-updates
+        patterns:
+          - "*"       # A wildcard that matches all dependencies in the package
     commit-message:
       prefix: 'actions'
       prefix-development: 'actions dev'
