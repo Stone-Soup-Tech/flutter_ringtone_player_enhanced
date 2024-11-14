@@ -4,7 +4,7 @@ updates:
   - package-ecosystem: 'pub'
     directory: '/'
     schedule:
-      interval: 'daily'
+      interval: 'weekly'
     reviewers:
       - "MihMihai"
     labels:
@@ -24,7 +24,7 @@ updates:
   - package-ecosystem: 'pub'
     directory: '/example/'
     schedule:
-      interval: 'daily'
+      interval: 'weekly'
     reviewers:
       - "MihMihai"
     labels:
@@ -44,7 +44,7 @@ updates:
   - package-ecosystem: "gradle" # See documentation for possible values
     directory: "/android/" # Location of package manifests
     schedule:
-      interval: "daily"
+      interval: "weekly"
     reviewers:
       - "MihMihai"
     labels:
@@ -63,7 +63,7 @@ updates:
   - package-ecosystem: "gradle" # See documentation for possible values
     directory: "/example/android/" # Location of package manifests
     schedule:
-      interval: "daily"
+      interval: "weekly"
     reviewers:
       - "MihMihai"
     labels:
@@ -82,7 +82,7 @@ updates:
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
-      interval: 'daily'
+      interval: 'weekly'
     reviewers:
       - "MihMihai"
     labels:
